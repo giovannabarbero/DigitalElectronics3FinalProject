@@ -35,11 +35,11 @@ This scale emulates a VU meter, indicating whether the volume level is Low, Norm
 💻 Software & Libraries
 * CMSIS (Cortex Microcontroller Software Interface Standard)
 
-* Custom drivers by Eng. Trujillo
+* Custom drivers by David Trujillo
 
 * Hercules Setup Utility (for UART client monitoring)
 
 👥 Credits
 * Developers: Thomas von Büren, Giovanna Luz Barbero
 
-* Driver Development: Eng. Trujillo
+* Driver Development: David Trujillo
