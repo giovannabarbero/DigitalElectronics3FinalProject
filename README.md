@@ -2,7 +2,7 @@
 LPC1769 Decibel Meter
 📖 Description
 
-We developed a program for the LPC1769 device using CMSIS libraries and drivers developed by Eng. Trujillo. It takes an input from a microphone, processes the information according to standards derived from a standardized decibel meter, and outputs this processed reading through a corresponding number of lit LEDs.
+We developed a program for the LPC1769 device using CMSIS libraries and drivers developed by David Trujillo. It takes an input from a microphone, processes the information according to standards derived from a standardized decibel meter, and outputs this processed reading through a corresponding number of lit LEDs.
 
 This scale emulates a VU meter, indicating whether the volume level is Low, Normal, or High in terms of how harmful it is to the human ear. Furthermore, it includes an output on 7-segment displays showing the integer dB value and the weighting curve applied, two LEDs indicating the acquisition mode (Fast or Slow), and finally, an output via UART protocol to a Hercules client. The LPC is turned on and off using an external button.
 
