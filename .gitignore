@@ -1,1 +1,7 @@
-/Debug/
+# Carpetas temporales
+Debug/
+Release/
+
+# Archivos específicos a ignorar
+*.p1
+*.d
