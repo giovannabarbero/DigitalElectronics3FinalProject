@@ -1,8 +1,10 @@
 # Sistema de Medición de Nivel Sonoro - Sonómetro
 > **Asignatura:** Electrónica Digital III - Universidad Nacional de Córdoba
+
 > **Integrantes:**
 > * Thomas von Büren - 43136697
 > * Giovanna Luz Barbero - 46509956
+
 > **Profesor:** Ing Marcos Blasco
 
 ---
@@ -37,8 +39,8 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 
 ### 🔌 Hardware & Interconexión
 * **Diagrama de Bloques:** [Insertar imagen o link al diagrama de bloques del hardware]
-* **Esquemático del Circuito:** *[Inserte aquí la captura de imagen/render del esquemático completo desarrollado en KiCad/Altium]*
-  `![Esquemático Completo](hardware/esquematico.png)`
+* **Esquemático del Circuito:** 
+  ![Esquemático Completo](hardware/esquematico.png)
 * **Descripción del Circuito y Consideraciones de Diseño:** 
     * Pines de displays...
     * Diodo en Neopixel...
@@ -51,8 +53,10 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
         * Etapa filtro...
 
 ### 💻 Arquitectura de Software (Firmware)
-* **Diagrama de Flujo o Máquina de Estados:** *[Inserte aquí la imagen del diagrama que explique el lazo principal o el comportamiento del sistema]*
-  `![Diagrama de Flujo / Máquina de Estados](docs/diagrama_software.png)`
+* **Diagrama de Flujo o Máquina de Estados:** 
+  ![Diagrama de Flujo / Máquina de Estados](docs/diagrama_software.png)
+
+  ![Máquina de Estados](docs/diagrama_estados.png)
 
 ---
 
