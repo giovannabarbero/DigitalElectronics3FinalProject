@@ -38,7 +38,8 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 ## 📐 2. Arquitectura del Sistema: Hardware y Software
 
 ### 🔌 Hardware & Interconexión
-* **Diagrama de Bloques:** [Insertar imagen o link al diagrama de bloques del hardware]
+* **Diagrama de Bloques:**
+  ![Máquina de Estados](docs/diagrama_estados.png)
 * **Esquemático del Circuito:** 
   ![Esquemático Completo](hardware/esquematico.png)
 * **Descripción del Circuito y Consideraciones de Diseño:** 
@@ -56,7 +57,7 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 * **Diagrama de Flujo o Máquina de Estados:** 
   ![Diagrama de Flujo / Máquina de Estados](docs/diagrama_software.png)
 
-  ![Máquina de Estados](docs/diagrama_estados.png)
+  
 
 ---
 
