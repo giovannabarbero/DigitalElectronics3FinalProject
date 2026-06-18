@@ -104,6 +104,10 @@ Demuestren con datos empíricos que el sistema funciona correctamente. **Es obli
    * Medición del nivel de decibelios del DAC: Se utilizó un decibelímetro para poder conseguir la medida homologada del sonido emitido por el parlante conectado al DAC, para así poder calibrar el medidor correctamente.
 * **Evidencia Fotográfica y Gráficos:** 
    * 
-  * *Foto del Prototipo Real:* [Insertar foto del hardware final cableado/armado en funcionamiento]
+  * *Foto del Prototipo Real:*
+       * Medición de ganancia del osciloscopio:
+         ![Potenciómetro ajustado](docs/Luego_de_ajustar_potenciometro.png)
+       * Foto del circuito funcionando:
+         
 
 ---
