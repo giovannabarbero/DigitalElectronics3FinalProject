@@ -80,7 +80,7 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 Describan cronológicamente cómo fueron sumando y testeando las diferentes partes del proyecto (enfoque modular de ingeniería).
 
 * **Etapa 1 (Validación inicial):**
-*    * Se realizaron investigaciones de la regulación de la medición del sonido en decibelios según la IEEE.
+     * Se realizaron investigaciones de la regulación de la medición del sonido en decibelios según la IEEE.
      * Se realizó el diagrama de estados correspondiente al flujo del código.
      * Se diseñó y cortó la madera donde se presentarían las mediciones finales.
 * **Etapa 2 (Adquisición/Comunicación):** 
