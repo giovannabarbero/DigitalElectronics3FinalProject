@@ -12,6 +12,7 @@
 #include "lpc17xx_ssp.h"
 #include "lpc17xx_exti.h"
 #include "lpc17xx_uart.h"
+#include <stdio.h>
 
 //Defines Generales de math
 #define BLOCK_SIZE 128
@@ -87,18 +88,30 @@ volatile uint8_t c = 0;
 int32_t estados_A[3][4] = {0};
 int32_t estados_C[2][4] = {0};
 // --- VARIABLES DSP ---
-float32_t coeficientes_A[15] = {
+/*float32_t coeficientes_A[15] = {
 		    0.2441f,  0.4882f,  0.2441f, -0.2743f, -0.0156f,
 		    1.0000f, -2.0000f,  1.0000f,  1.6502f, -0.7123f,
 		    1.0000f, -2.0000f,  1.0000f,  1.8974f, -0.9021f
+};*/
+float32_t coeficientes_A[15] = {
+    4.247708e-01f, 8.495416e-01f, 4.247708e-01f, -4.592981e-01f, -5.273868e-02f,
+    1.000000e+00f, -2.000000e+00f, 1.000000e+00f, 1.796051e+00f, -8.009464e-01f,
+    1.000000e+00f, -2.000000e+00f, 1.000000e+00f, 1.989243e+00f, -9.892723e-01f
 };
+
 float32_t estados_filtro_A[4 * NUM_STAGES_A];
 arm_biquad_casd_df1_inst_f32 filtro_A;
-
+/*
 float32_t coeficientes_C[10] = {
     0.994628f, -1.989257f,  0.994628f,  1.989243f, -0.989272f,
     0.622000f,  1.244000f,  0.622000f, -1.154700f, -0.333300f
+};*/
+
+float32_t coeficientes_C[10] = {
+    3.786953e-01f, 7.573906e-01f, 3.786953e-01f, -4.592981e-01f, -5.273868e-02f,
+    1.000000e+00f, -2.000000e+00f, 1.000000e+00f, 1.989243e+00f, -9.892723e-01f
 };
+
 float32_t estados_filtro_C[4 * NUM_STAGES_C];
 arm_biquad_casd_df1_inst_f32 filtro_C;
 float32_t entrada_float[BLOCK_SIZE];
@@ -285,18 +298,18 @@ while(1){
 						float32_t db_A = calibrar_lectura_dB(db_A_crudo);
 						float32_t db_C = calibrar_lectura_dB(db_C_crudo);
 
-						printf("Intento %d/5 - Curva A: %.2f dB | Curva C: %.2f dB\n", intentos, db_A, db_C);
-						fflush(stdout);
+						//printf("Intento %d/5 - Curva A: %.2f dB | Curva C: %.2f dB\n", intentos, db_A, db_C);
+						//fflush(stdout);
 
 						// Chequear Condiciones (Misma onda con tolerancia de 1dB y rango entre 90 y 95)
 						if (fabs(db_A - db_C) <= 1.0f && (db_A >= 90.0f && db_A <= 95.0f)) {
-							printf("¡Calibracion Exitosa!\n");
+							//printf("¡Calibracion Exitosa!\n");
 							calibrado = 1;
 						}
 						// Max intentos entonces err
 						else if (intentos >= 5) {
-							printf("Error: No se pudo calibrar tras 5 intentos.\n");
-							fflush(stdout);
+							//printf("Error: No se pudo calibrar tras 5 intentos.\n");
+							//fflush(stdout);
 							error_calib = 1;
 						}
 					}
@@ -385,7 +398,7 @@ while(1){
 
 				// LIMITAMOS EL RANGO (Esto evita el crash por valores fuera de tabla)
 				if (curveMode == 1) {
-									nivel_dB_crudo = nivel_dB_crudo - 15.0f; // <--- Restamos el exceso
+									nivel_dB_crudo = nivel_dB_crudo - 11.0f; // <--- Restamos el exceso
 								}
 
 				//llamamos a tu función de calibración
@@ -635,7 +648,10 @@ float32_t calibrar_lectura_dB(float32_t db_crudo) {
 	    // (48 a 51): Rampa final sirena.
 	    // (51 a 55): Techo máximo de seguridad.
 	float32_t crudo_x[] = { 25.0f, 40.0f, 45.0f, 48.0f, 51.0f, 55.0f };
-	float32_t real_y[]  = { 20.0f, 30.0f, 50.0f, 70.0f, 93.0f, 105.0f };
+	float32_t real_y[]  = { 25.0f, 40.0f, 50.0f, 70.0f, 93.0f, 105.0f };
+
+	//float32_t crudo_x[] = { 25.0f, 40.0f, 45.0f, 48.0f, 51.0f, 55.0f };
+	//float32_t real_y[]  = { 20.0f, 30.0f, 50.0f, 70.0f, 93.0f, 105.0f };
     // Menor al primer punto, valor crudo
     if (db_crudo <= crudo_x[0]) {
         return db_crudo;
@@ -795,7 +811,7 @@ void enviar_NeoPixel_Rapido(void){
     }
 
     // Apagamos las interrupciones para que la CPU no parpadee
-    //__disable_irq();
+    __disable_irq();
 
     for (int i = 0; i < SPI_BUFFER_SIZE; i++) {
         while ((LPC_SSP0->SR & (1 << 1)) == 0);
@@ -805,7 +821,7 @@ void enviar_NeoPixel_Rapido(void){
     while (LPC_SSP0->SR & (1 << 4));
 
     // Volvemos a encender las interrupciones
-    //__enable_irq();
+    __enable_irq();
 
     Delay_ms(1);
 }
@@ -1107,6 +1123,7 @@ void configTMR2(void){ //Intentamos mejorar mux
 
     // MCR: Activa Interrupción (bit 3) y Reseteo (bit 4) automático al llegar a MR1
     LPC_TIM2->MCR = (3 << 3);
+    NVIC_SetPriority(TIMER2_IRQn, 5);
     NVIC_EnableIRQ(TIMER2_IRQn);
     LPC_TIM2->TCR = 0x01;       // Arrancar el Timer
 }
@@ -1244,3 +1261,4 @@ void encender_DAC_pin(void){
     PINSEL_ConfigPin(&pinCfg);
 
 }
+
