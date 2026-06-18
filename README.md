@@ -107,9 +107,9 @@ Demuestren con datos empíricos que el sistema funciona correctamente. **Es obli
   * *Foto del Prototipo Real:*
        * Medición de ganancia del osciloscopio:
          * Antes de ajustar el potenciómetro:
-           ![Diagrama de Flujo / Máquina de Estados](docs/diagrama_software.png)
+           ![Sin potenciómetro ajustado](docs/Previo_Ajuste_Potenciometro.jpeg)
          * Luego de ajustar el potenciómetro:
-         ![Potenciómetro ajustado](docs/Luego de ajustar potenciometro.jpeg)
+         ![Potenciómetro ajustado](docs/Luego_Ajuste_Potenciometro.jpeg)
        * Foto del circuito funcionando:
          ![Circuito finalizado](hardware/finalizado.jpeg)
 
