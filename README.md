@@ -12,7 +12,7 @@
 ## 🚀 1. Descripción General del Proyecto
 Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la información mediante estándares industriales aplicados a decibelímetros sonoros regulados, y se devuelve un valor en decibelios para ser expuesto mediante actuadores, indicadores visuales, e interfaces de comunicación. Posee un modo de auto-calibración.
 
-### 🎯 Alcances del Proyecto (¿Qué hace y qué NO hace el sistema?)
+### 🎯 Alcances del Proyecto 
 * **El sistema SÍ es capaz de:** 
     * Adquirir información sonora ambiente en tiempo real.
     * Realizar cálculos de ponderación de curvas reguladas IEC 61672-1 y ANSI S1.43 sobre los datos obtenidos.
@@ -28,7 +28,7 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
     * Conectividad por WiFi/Bluetooth/Ethernet.
     * Rigurosidad homologada ni certificada.
 
-### ⏩ Posibles Etapas Siguientes (Líneas Futuras)
+### ⏩ Posibles Etapas Siguientes 
 * Migrar el circuito de protoboard a un circuito impreso (PCB) diseñado bajo normas de compatibilidad electromagnética (EMC).
 * Implementar componente portable con batería para mejorar portabilidad.
 * Emplear componentes especializados de mejor calidad y ad hoc al dispositivo
@@ -62,7 +62,7 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 
 ## ⚡ 3. Especificaciones Eléctricas, Alimentación y Entorno
 
-### 🔌 Parámetros de Alimentación y Consumo (Común a ambas materias)
+### 🔌 Parámetros de Alimentación y Consumo 
 * **Tensión de operación del sistema:** 5V / 3.3V
 * **Método de alimentación:** Fuente externa de 12V con regulador de voltaje lineal AMS1117-5V/3.3V / Alimentación por USB
 * **Consumo estimado o medido:** * En modo activo (máxima carga, relés/motores encendidos): `~ 1500 mA`
@@ -76,21 +76,33 @@ Se toman mediciones del sonido ambiente mediante un micrófono, se procesa la in
 
 ---
 
-## 🔄 4. Proceso de Integración y Desarrollo (Común)
+## 🔄 4. Proceso de Integración y Desarrollo
 Describan cronológicamente cómo fueron sumando y testeando las diferentes partes del proyecto (enfoque modular de ingeniería).
 
-* **Etapa 1 (Validación inicial):** [Ej: Configuración del oscilador/reloj y parpadeo de LED de estado].
-* **Etapa 2 (Adquisición/Comunicación):** [Ej: Implementación del ADC y envío de tramas crudas por UART].
-* **Etapa 3 (Integración lógica):** [Ej: Procesamiento de datos, lógica de control o montado sobre el RTOS].
-* **Etapa 4 (Sistema Completo):** [Ej: Acople de actuadores finales, calibración y pruebas de estrés].
+* **Etapa 1 (Validación inicial):**
+*    * Se realizaron investigaciones de la regulación de la medición del sonido en decibelios según la IEEE.
+     * Se realizó el diagrama de estados correspondiente al flujo del código.
+     * Se diseñó y cortó la madera donde se presentarían las mediciones finales.
+* **Etapa 2 (Adquisición/Comunicación):** 
+     * Se realizaron los diferentes bloques de código separadamente para así poder testear cada parte del proyecto por cuenta propia.
+     * Se armaron los elementos bases del circuito (Módulo de micrófono, Parlante, Displays).
+* **Etapa 3 (Integración lógica):** 
+     * Se combinaron paulatinamente diferentes bloques para probar compatibilidad y facilitar el testing.
+     * Se terminó de armar el circuito con todos los elementos integrados.
+* **Etapa 4 (Sistema Completo):**
+     * Se juntó todo el código para así probar el funcionamiento completo del proyecto.
+     * Se soldaron componentes y se armó todo con el perfil de madera.
 
 ---
 
-## 📊 5. Ensayos, Pruebas y Resultados (Común)
+## 📊 5. Ensayos, Pruebas y Resultados 
 Demuestren con datos empíricos que el sistema funciona correctamente. **Es obligatorio incluir registro visual**.
 
-* **Pruebas Funcionales Realizadas:** Detallen los ensayos (Ej: "Se inyectó una señal controlada para medir la precisión del ADC...").
-* **Evidencia Fotográfica y Gráficos:** * *Capturas de instrumental:* [Insertar capturas de Osciloscopio, Analizador Lógico o Terminal Serie]
+* **Pruebas Funcionales Realizadas:**
+   * Medición de ganancia del micrófono: Se conectó la salida del amplificador operacional a un osciloscopio para confirmar la ganancia del módulo de micrófono y si el offset era el adecuado (1.65v en silencio).
+   * Medición del nivel de decibelios del DAC: Se utilizó un decibelímetro para poder conseguir la medida homologada del sonido emitido por el parlante conectado al DAC, para así poder calibrar el medidor correctamente.
+* **Evidencia Fotográfica y Gráficos:** 
+   * 
   * *Foto del Prototipo Real:* [Insertar foto del hardware final cableado/armado en funcionamiento]
 
 ---
