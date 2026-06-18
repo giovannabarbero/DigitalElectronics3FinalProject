@@ -108,6 +108,6 @@ Demuestren con datos empíricos que el sistema funciona correctamente. **Es obli
        * Medición de ganancia del osciloscopio:
          ![Potenciómetro ajustado](docs/Luego_de_ajustar_potenciometro.png)
        * Foto del circuito funcionando:
-         
+         ![Circuito finalizado](hardware/finalizado.jpeg)
 
 ---
